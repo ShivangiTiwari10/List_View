@@ -31,8 +31,11 @@ class MainActivity : AppCompatActivity() {
         )
         binding.userlist.adapter = arrayAdapter
 
-//        2. using ArrayListOf
+//     2. using ArrayListOf
 
+//      step 1- Add listView in xml
+
+//      step 2.make arrayList
         val taskList = arrayListOf<String>()
 
         taskList.add("Complete the app dev projects")
@@ -40,11 +43,14 @@ class MainActivity : AppCompatActivity() {
         taskList.add("Work on resume")
         taskList.add("Improve internet presence")
 
+//      step 3. create Adapter
         val adapterMyList = ArrayAdapter(this, android.R.layout.simple_list_item_1, taskList)
+
+//      step 4. Set Adapter in ListView
         binding.userlist.adapter = adapterMyList
 
 
-
+//      step: 5. listener on item clicked
         binding.userlist.setOnItemClickListener { adapterView, view, i, l ->
 
             val text = "Clicked on Item" + (view as TextView).text.toString()

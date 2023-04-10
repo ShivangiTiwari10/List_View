@@ -23,12 +23,11 @@ class MainActivity : AppCompatActivity() {
         )
 
         // access the listView from xml file
-        val mListView = binding.userlist
         arrayAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1, toDo
         )
-        mListView.adapter = arrayAdapter
+        binding.userlist.adapter = arrayAdapter
 
     }
 }

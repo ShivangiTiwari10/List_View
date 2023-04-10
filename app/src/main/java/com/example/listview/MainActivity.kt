@@ -3,7 +3,8 @@ package com.example.listview
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.TextView
+import android.widget.Toast
 import com.example.listview.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//       1. using arrayOf
         val arrayAdapter: ArrayAdapter<*>
 
         val toDo = arrayOf(
@@ -28,6 +30,26 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_list_item_1, toDo
         )
         binding.userlist.adapter = arrayAdapter
+
+//        2. using ArrayListOf
+
+        val taskList = arrayListOf<String>()
+
+        taskList.add("Complete the app dev projects")
+        taskList.add("Learn list view")
+        taskList.add("Work on resume")
+        taskList.add("Improve internet presence")
+
+        val adapterMyList = ArrayAdapter(this, android.R.layout.simple_list_item_1, taskList)
+        binding.userlist.adapter = adapterMyList
+
+
+
+        binding.userlist.setOnItemClickListener { adapterView, view, i, l ->
+
+            val text = "Clicked on Item" + (view as TextView).text.toString()
+            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+        }
 
     }
 }
